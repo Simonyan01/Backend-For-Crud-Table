@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+body {
+    background-color: #19191d;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.content {
+    justify-content: space-between;
+    display: flex;
+    width: 700px;
+    margin-top: 60px;
+}
+
+.table-data {
+    position: relative;
+    right: 100px;
+    margin: 6px;
+
+}
+
+form {
+    position: relative;
+    left: 70px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+input {
+    padding: 4px;
+    margin: 10px 0;
+    font-size: medium;
+    color: whitesmoke;
+}
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 15px 0;
+
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: large;
+
+}
+
+
+th {
+    min-width: 85px;
+    border: 4px solid #19191d;
+    border-radius: 16px;
+    padding: 5px;
+    background-color: rgb(62, 69, 77);
+    color: rgb(207, 195, 195);
+    transition: background .3s linear;
+    cursor: default;
+
+}
+
+th:hover {
+    background-color: rgb(47, 126, 216);
+
+}
+
+th:first-child {
+    min-width: 25px;
+}
+
+tbody {
+    color: rgb(123, 116, 116);
+    cursor: default;
+    text-align: center;
+}
+
+
+
+td {
+    transition: color .2s linear;
+    border: 1px solid #4e4e52;
+    cursor: default;
+    box-shadow: 0 0 10px rgb(163, 159, 159);
+
+}
+
+td:hover {
+    color: rgb(239, 232, 232);
+}
+
+
+.clearButton {
+    padding: 2px 15px;
+    margin: 4px 0;
+    color: rgb(155, 152, 152);
+    transition: background .4s linear;
+    background: transparent;
+    border: 1px solid #19191d;
+    font-size: medium;
+
+}
+
+.clearButton:hover {
+    background: rgb(208, 179, 133);
+    cursor: default;
+    color: rgb(71, 67, 67);
+}
+
+.editAddButton {
+    margin: 4px 0;
+    padding: 2px 12px;
+    color: rgb(155, 152, 152);
+    background: transparent;
+    border: 1px solid #19191d;
+    transition: background .4s linear;
+    font-size: medium;
+
+
+}
+
+.editAddButton:hover {
+    background: rgb(208, 179, 133);
+    color: rgb(71, 67, 67);
+    cursor: default;
+
+}
+
+.editButton {
+    margin: 7px 5px;
+    padding: 2px 12px;
+    background: transparent;
+    border: 1px solid rgb(27, 21, 21);
+    transition: color .3s linear;
+    color: rgb(180, 174, 167);
+
+}
+
+.editButton:hover {
+    color: rgb(240, 188, 92);
+
+}
+
+
+.removeButton {
+    margin: 7px 5px;
+    padding: 2px 12px;
+    background: transparent;
+    border: 1px solid #19191d;
+    transition: color .3s linear;
+}
+
+.removeButton:hover {
+    color: wheat;
+}
