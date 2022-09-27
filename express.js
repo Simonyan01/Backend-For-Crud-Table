@@ -1,33 +1,23 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import { v4 as uuidv4 } from 'uuid';
-import cors from 'cors'
-
-const app = express();
+const express = require('express')
+const bodyParser = require('body-parser')
 const JSONparser = bodyParser.json()
-const PORT = 4000
+const { v4: uuidv4 } = require('uuid');
+const cors = require('cors')
+const app = express();
+const PORT = 4000;
+const sqlite = require('sqlite3').verbose();
+const db = new sqlite.Database("./echo.db", sqlite.OPEN_READWRITE, (err) => {
+    if (err) return console.error(err.message);
+    console.log("Database Opened Successfully");
+});
+db.run('CREATE TABLE if not exists echo (ID INTEGER PRIMARY KEY AUTOINCREMENT, name "TEXT VARCHAR(255) NOT NULL", surname " TEXT ", age INTEGER,salary NOT NULL)')
 
 app.use(cors())
 app.use(JSONparser)
 
-
-let user = [{
-    name: "Vardan",
-    surname: "Gasparyan",
-    age: 24,
-    salary: 100000,
-    id: uuidv4()
-},
-{
-    name: "Artak",
-    surname: "Karapetyan",
-    age: 32,
-    salary: 200000,
-    id: uuidv4()
-}
-]
-
 // Our user
+
+let user = []
 
 app.get('/users', (req, res) => {
     res.send(JSON.stringify(user))
@@ -55,8 +45,8 @@ app.post('/users', JSONparser, (req, res) => {
         id: uuidv4()
     }
     user.push(new_user)
-
-    res.send("User Added")  //res.send(`User Added: ${new_user.name}`)
+    db.run("INSERT INTO echo(name, surname, age, salary, id) VALUES (?, ?, ?, ?, ?)", body["name"], body["surname"], body["age"], body["salary"], body["id"])
+    res.send("User Added In Database")  //res.send(`User Added: ${new_user.name}`)
 });
 
 // Update
@@ -90,5 +80,3 @@ app.delete('/users/:id', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is Started on http://localhost:${PORT}`)
 })
-
-export default app
