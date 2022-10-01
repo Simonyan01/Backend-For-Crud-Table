@@ -10,7 +10,7 @@ const db = new sqlite.Database("./echo.db", sqlite.OPEN_READWRITE, (err) => {
     if (err) return console.error(err.message);
     console.log("Database Opened Successfully");
 });
-db.run('CREATE TABLE if not exists echo (ID INTEGER PRIMARY KEY AUTOINCREMENT, name "TEXT VARCHAR(255) NOT NULL", surname " TEXT ", age INTEGER,salary NOT NULL)')
+db.run('CREATE TABLE IF NOT EXISTS echo (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name "TEXT VARCHAR(255) NOT NULL", Surname "TEXT", Age INTEGER,Salary NOT NULL)')
 
 app.use(cors())
 app.use(JSONparser)
@@ -23,7 +23,7 @@ app.get('/users', (req, res) => {
     res.send(JSON.stringify(user))
 });
 
-// FIND user details
+// FIND user details with Id
 
 app.get('/users/:id', (req, res) => {
     const userNum = req.params.id
@@ -46,7 +46,7 @@ app.post('/users', JSONparser, (req, res) => {
     }
     user.push(new_user)
     db.run("INSERT INTO echo(name, surname, age, salary, id) VALUES (?, ?, ?, ?, ?)", body["name"], body["surname"], body["age"], body["salary"], body["id"])
-    res.send("User Added In Database")  //res.send(`User Added: ${new_user.name}`)
+    res.send("User Added In Database")    // res.send(`User Added: ${new_user.name}`)
 });
 
 // Update
