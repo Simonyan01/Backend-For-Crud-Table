@@ -17,8 +17,6 @@ app.use(JSONparser)
 
 // Our user
 
-let user = [];
-
 app.get('/users', (req, res) => {
     db.all("SELECT * FROM echo", (err, rows) => {
         console.log(rows)
